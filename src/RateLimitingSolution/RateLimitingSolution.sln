@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateLimiting", "RateLimiting\RateLimiting.csproj", "{91FDD3AE-4DFD-4451-A114-14423DD357D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestClient", "TestClient\TestClient.csproj", "{FF4AA804-1E8D-4BEE-B1D2-2486C7BFE545}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91FDD3AE-4DFD-4451-A114-14423DD357D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91FDD3AE-4DFD-4451-A114-14423DD357D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91FDD3AE-4DFD-4451-A114-14423DD357D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91FDD3AE-4DFD-4451-A114-14423DD357D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF4AA804-1E8D-4BEE-B1D2-2486C7BFE545}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF4AA804-1E8D-4BEE-B1D2-2486C7BFE545}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF4AA804-1E8D-4BEE-B1D2-2486C7BFE545}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF4AA804-1E8D-4BEE-B1D2-2486C7BFE545}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
