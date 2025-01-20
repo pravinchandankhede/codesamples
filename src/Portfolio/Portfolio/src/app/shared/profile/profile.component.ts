@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
     user = {
-        name: 'John Doe',
-        email: 'john.doe@example.com',
+        name: 'pravin c',
+        email: 'pravin.c@git.com',
         phone: '123-456-7890'
     };
 
