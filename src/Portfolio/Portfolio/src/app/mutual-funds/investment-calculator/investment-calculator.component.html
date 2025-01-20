@@ -1,0 +1,11 @@
+<div>
+  <h2>Investment Calculator</h2>
+  <label for="principal">Principal:</label>
+  <input id="principal" [(ngModel)]="principal" type="number">
+  <label for="rateOfReturn">Rate of Return (%):</label>
+  <input id="rateOfReturn" [(ngModel)]="rateOfReturn" type="number">
+  <label for="years">Years:</label>
+  <input id="years" [(ngModel)]="years" type="number">
+  <button (click)="calculateFutureValue()">Calculate</button>
+  <p>Future Value: {{ futureValue | currency }}</p>
+</div>

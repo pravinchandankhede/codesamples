@@ -6,3 +6,5 @@
 *.user
 [bB]in
 [oO]bj
+/src/Portfolio/Portfolio/.vscode
+/src/Portfolio/Portfolio/package-lock.json

@@ -1,0 +1,8 @@
+<div>
+  <h2>Transaction History</h2>
+  <ul>
+    <li *ngFor="let transaction of transactions">
+      {{ transaction.date }} - {{ transaction.description }}: {{ transaction.amount | currency }}
+    </li>
+  </ul>
+</div>

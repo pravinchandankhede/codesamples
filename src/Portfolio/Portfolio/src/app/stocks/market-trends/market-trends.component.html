@@ -1,0 +1,8 @@
+<div>
+  <h2>Market Trends</h2>
+  <ul>
+    <li *ngFor="let trend of trends">
+      {{ trend.name }}: {{ trend.change }}%
+    </li>
+  </ul>
+</div>
