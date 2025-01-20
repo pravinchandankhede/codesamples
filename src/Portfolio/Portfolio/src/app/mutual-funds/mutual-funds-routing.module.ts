@@ -5,7 +5,8 @@ import { InvestmentCalculatorComponent } from './investment-calculator/investmen
 
 const routes: Routes = [
     { path: 'fund-overview', component: FundOverviewComponent },
-    { path: 'investment-calculator', component: InvestmentCalculatorComponent }
+    { path: 'investment-calculator', component: InvestmentCalculatorComponent },
+    { path: '', component: FundOverviewComponent }
 ];
 
 @NgModule({

@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+    selector: 'app-profile',
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.css'],
+    standalone: false,
 })
 export class ProfileComponent implements OnInit {
-  user = {
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    phone: '123-456-7890'
-  };
+    user = {
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        phone: '123-456-7890'
+    };
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 }

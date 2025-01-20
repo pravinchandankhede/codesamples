@@ -4,8 +4,15 @@ import { AccountSummaryComponent } from './account-summary/account-summary.compo
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 
 const routes: Routes = [
-    { path: 'account-summary', component: AccountSummaryComponent },
-    { path: 'transaction-history', component: TransactionHistoryComponent }
+    {
+        path: '',
+        children: [
+            { path: 'account-summary', component: AccountSummaryComponent },
+            { path: 'transaction-history', component: TransactionHistoryComponent },
+            { path: '', component: AccountSummaryComponent },
+            { path: '**', pathMatch: 'full', redirectTo: 'account-summary'}
+        ]
+    }
 ];
 
 @NgModule({

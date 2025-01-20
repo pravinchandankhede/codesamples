@@ -5,7 +5,8 @@ import { MarketTrendsComponent } from './market-trends/market-trends.component';
 
 const routes: Routes = [
     { path: 'stock-portfolio', component: StockPortfolioComponent },
-    { path: 'market-trends', component: MarketTrendsComponent }
+    { path: 'market-trends', component: MarketTrendsComponent },
+    { path: '', component: StockPortfolioComponent }
 ];
 
 @NgModule({

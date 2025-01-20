@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggerService } from '../core/logger.service';
-import { CachingService } from '../core/caching.service';
+import { LoggerService } from '../../core/logger.service';
+import { CachingService } from '../../core/caching.service';
 
 @Component({
     selector: 'app-transaction-history',
     templateUrl: './transaction-history.component.html',
-    styleUrls: ['./transaction-history.component.css']
+    styleUrls: ['./transaction-history.component.css'],
+    standalone: false,
 })
 export class TransactionHistoryComponent implements OnInit {
     transactions = [
@@ -21,6 +22,6 @@ export class TransactionHistoryComponent implements OnInit {
     ngOnInit(): void {
         this.cache.set('transactions', this.transactions);
         const cachedTransactions = this.cache.get('transactions');
-        this.logger.log('Cached Transactions:', cachedTransactions);        
+        this.logger.log('Cached Transactions:' + cachedTransactions);        
     }
 }

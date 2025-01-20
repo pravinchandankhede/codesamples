@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggerService } from '../core/logger.service';
-import { CachingService } from '../core/caching.service';
+import { LoggerService } from '../../core/logger.service';
+import { CachingService } from '../../core/caching.service';
 
 @Component({
     selector: 'app-account-summary',
     templateUrl: './account-summary.component.html',
-    styleUrls: ['./account-summary.component.css']
+    styleUrls: ['./account-summary.component.css'],
+    standalone: false,
 })
 export class AccountSummaryComponent implements OnInit {
     accountBalance: number = 5000;
@@ -17,6 +18,6 @@ export class AccountSummaryComponent implements OnInit {
     ngOnInit(): void {
         this.cache.set('accountBalance', this.accountBalance);
         const cachedBalance = this.cache.get('accountBalance');
-        this.logger.log('Cached Account Balance:', cachedBalance);        
+        this.logger.log('Cached Account Balance:' + cachedBalance);        
     }
 }
