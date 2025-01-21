@@ -1,8 +1,24 @@
-<div>
-  <h2>Fund Overview</h2>
-  <ul>
-    <li *ngFor="let fund of funds">
-      {{ fund.name }}: {{ fund.value | currency }}
-    </li>
-  </ul>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h2>Fund Overview</h2>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Fund Name</th>
+                        <th scope="col">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let fund of funds">
+                        <td>{{ fund.name }}</td>
+                        <td>{{ fund.value | currency }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+

@@ -1,11 +1,26 @@
-<div>
-  <h2>Investment Calculator</h2>
-  <label for="principal">Principal:</label>
-  <input id="principal" [(ngModel)]="principal" type="number">
-  <label for="rateOfReturn">Rate of Return (%):</label>
-  <input id="rateOfReturn" [(ngModel)]="rateOfReturn" type="number">
-  <label for="years">Years:</label>
-  <input id="years" [(ngModel)]="years" type="number">
-  <button (click)="calculateFutureValue()">Calculate</button>
-  <p>Future Value: {{ futureValue | currency }}</p>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h2>Investment Calculator</h2>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="mb-3">
+                    <label for="principal" class="form-label">Principal:</label>
+                    <input id="principal" [(ngModel)]="principal" type="number" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="rateOfReturn" class="form-label">Rate of Return (%):</label>
+                    <input id="rateOfReturn" [(ngModel)]="rateOfReturn" type="number" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="years" class="form-label">Years:</label>
+                    <input id="years" [(ngModel)]="years" type="number" class="form-control">
+                </div>
+                <button (click)="calculateFutureValue()" class="btn btn-primary">Calculate</button>
+            </form>
+            <p class="mt-3">Future Value: {{ futureValue | currency }}</p>
+        </div>
+    </div>
 </div>
+

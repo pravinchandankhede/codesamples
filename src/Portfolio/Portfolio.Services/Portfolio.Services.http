@@ -29,3 +29,15 @@ GET {{Portfolio.Services_HostAddress}}/api/fund/calculate?principal=1000&rate=5&
 Accept: application/json
 
 ###
+
+### Stock Controller
+# Get Stock Portfolio
+GET {{Portfolio.Services_HostAddress}}/api/stock/portfolio
+Accept: application/json
+
+### Stock Controller
+# Get Market Trends
+GET {{Portfolio.Services_HostAddress}}/api/stock/trends
+Accept: application/json
+
+###

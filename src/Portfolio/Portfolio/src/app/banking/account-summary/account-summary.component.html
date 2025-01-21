@@ -1,4 +1,10 @@
-<div>
-  <h2>Account Summary</h2>
-  <p>Account Balance: {{ accountBalance | currency }}</p>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h2>Account Summary</h2>
+        </div>
+        <div class="card-body">
+            <p class="card-text">Account Balance: <span class="font-weight-bold">{{ accountBalance | currency }}</span></p>
+        </div>
+    </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StockService } from '../../services/stock.service';
 
 @Component({
     selector: 'app-market-trends',
@@ -13,8 +14,12 @@ export class MarketTrendsComponent implements OnInit {
         { name: 'Finance', change: 0.8 }
     ];
 
-    constructor() { }
+    constructor(private stockService: StockService) {
+    }
 
     ngOnInit(): void {
+        this.stockService.getMarketTrends().subscribe(data => {
+            this.trends = data;
+        });
     }
 }

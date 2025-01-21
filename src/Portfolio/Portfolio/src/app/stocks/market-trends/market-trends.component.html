@@ -1,8 +1,25 @@
-<div>
-  <h2>Market Trends</h2>
-  <ul>
-    <li *ngFor="let trend of trends">
-      {{ trend.name }}: {{ trend.change }}%
-    </li>
-  </ul>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h2>Market Trends</h2>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Sector</th>
+                        <th scope="col">Change (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let trend of trends">
+                        <td>{{ trend.name }}</td>
+                        <td [ngClass]="{'text-success': trend.change > 0, 'text-danger': trend.change < 0}">
+                            {{ trend.change }}%
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

@@ -1,8 +1,28 @@
-<header>
-  <h1>{{ companyName }}</h1>
-  <nav>
-    <a routerLink="/app/banking">Banking</a>
-    <a routerLink="/app/mutual-funds">Mutual Funds</a>
-    <a routerLink="/app/stocks">Stocks</a>
-  </nav>
-</header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Portfolio</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/app/banking">Banking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/app/mutual-funds">Mutual Fund</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/app/stocks">Stocks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+

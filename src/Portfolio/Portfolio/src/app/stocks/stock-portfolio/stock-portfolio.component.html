@@ -1,8 +1,25 @@
-<div>
-  <h2>Stock Portfolio</h2>
-  <ul>
-    <li *ngFor="let stock of stocks">
-      {{ stock.name }}: {{ stock.quantity }} shares {{ stock.price | currency }}
-    </li>
-  </ul>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h2>Stock Portfolio</h2>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let stock of stocks">
+                        <td>{{ stock.name }}</td>
+                        <td>{{ stock.quantity }}</td>
+                        <td>{{ stock.price | currency }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
