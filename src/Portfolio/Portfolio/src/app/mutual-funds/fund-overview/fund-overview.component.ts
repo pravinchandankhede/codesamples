@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MutualFundService } from '../../services/mutualfund.service';
 
 @Component({
     selector: 'app-fund-overview',
@@ -13,8 +14,11 @@ export class FundOverviewComponent implements OnInit {
         { name: 'Hybrid Fund', value: 7500 }
     ];
 
-    constructor() { }
+    constructor(private fundService: MutualFundService) { }
 
     ngOnInit(): void {
+        this.fundService.getFundOverview().subscribe(data => {
+            this.funds = data;
+        });
     }
 }

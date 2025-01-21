@@ -1,0 +1,31 @@
+@Portfolio.Services_HostAddress = http://localhost:5130
+
+### Weather Forecast
+GET {{Portfolio.Services_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+### Banking Controller
+# Get Account Balance
+GET {{Portfolio.Services_HostAddress}}/api/banking/account/123456/balance
+Accept: application/json
+
+### Banking Controller
+# Get Account Transaction
+GET {{Portfolio.Services_HostAddress}}/api/banking/account/123456/transactions
+Accept: application/json
+
+###
+
+### Fund Controller
+# Get Fund Overview
+GET {{Portfolio.Services_HostAddress}}/api/fund/overview
+Accept: application/json
+
+### Fund Controller
+# Calculate Investment
+GET {{Portfolio.Services_HostAddress}}/api/fund/calculate?principal=1000&rate=5&time=10
+Accept: application/json
+
+###
