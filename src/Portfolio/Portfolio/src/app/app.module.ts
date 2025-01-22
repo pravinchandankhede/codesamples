@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { CachingInterceptor } from './interceptor/caching.interceptor';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,12 @@ import { HttpClientModule } from '@angular/common/http';
         CoreModule,
         HttpClientModule
     ],
-    providers: [],
+    providers: [
+        {
+            provide : HTTP_INTERCEPTORS,
+            useClass: CachingInterceptor,
+            multi: true
+        }],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
