@@ -1,23 +1,22 @@
 namespace RateLimiting;
 
-using Microsoft.Extensions.Options;
 using RateLimiting.Models;
-using RateLimiting.RateLimiter;
 using System.Threading.RateLimiting;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public static void Main(String[] args)
     {
-        var builder = WebApplication.CreateBuilder(args);
+
+        WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
 
-        builder.Services.AddControllers();
+        _ = builder.Services.AddControllers();
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-        builder.Services.AddOpenApi();
+        _ = builder.Services.AddOpenApi();
 
-        var myOptions = new MyRateLimitOptions();
+        MyRateLimitOptions myOptions = new();
         builder.Configuration.GetSection(MyRateLimitOptions.MyRateLimit).Bind(myOptions);
 
         //builder.Services.AddRateLimiter( options =>
@@ -26,7 +25,7 @@ public class Program
         //    options.RejectionStatusCode = 429;
         //});        
 
-        builder.Services.AddRateLimiter(options =>
+        _ = builder.Services.AddRateLimiter(options =>
         {
             //options.AddPolicy("Api", httpContext =>
             //    RateLimitPartition.GetFixedWindowLimiter(httpContext.Request.Host,
@@ -72,25 +71,25 @@ public class Program
             options.RejectionStatusCode = 429;
         });
 
-        var app = builder.Build();
+        WebApplication app = builder.Build();
 
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
-            app.MapOpenApi();
+            _ = app.MapOpenApi();
 
-            app.UseSwaggerUI(options =>
+            _ = app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/openapi/v1.json", "RateLimiting v1");
             });
         }
 
-        app.UseHttpsRedirection();
+        _ = app.UseHttpsRedirection();
 
-        app.UseAuthorization();
+        _ = app.UseAuthorization();
 
 
-        app.MapControllers();//.RequireRateLimiting("aeh");
+        _ = app.MapControllers();//.RequireRateLimiting("aeh");
 
 
         //// Separate Rate limit for specific Endpoint
@@ -99,7 +98,7 @@ public class Program
         //// Seprarate rate limit for specific service Group / subdomain
         //app.MapGroup("/api/orders").RequireRateLimiting("Api");
 
-        app.UseRateLimiter();
+        _ = app.UseRateLimiter();
 
         app.Run();
     }

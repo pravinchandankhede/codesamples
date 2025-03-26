@@ -12,7 +12,7 @@ internal class Program
             try
             {
                 var response = await httpClient.GetAsync("WeatherForecast", cancellationToken);
-                Console.WriteLine(response.ToString());
+                Console.WriteLine( $"Status Code {response.StatusCode}, ReasonPhrase {response.ReasonPhrase}");
             }
             catch (Exception ex)
             {
