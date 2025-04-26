@@ -24,6 +24,7 @@ jobs:
           dotnet-version: '3.1'
 
       - name: Build with dotnet
+        working-directory: D:\a\codesamples\codesamples\src\blogsitemap
         run: dotnet build --configuration Release
 
       - name: dotnet publish
