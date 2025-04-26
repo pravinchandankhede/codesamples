@@ -18,6 +18,12 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+
+    - name: Print folder and all its files
+      run: |
+       Get-ChildItem -Recurse -Force
+      shell: pwsh
+      
     - name: Restore
       working-directory: /home/runner/work/codesamples/codesamples/src/blogsitemap
       run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
