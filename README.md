@@ -1,11 +1,11 @@
 
 # Table of Contents
-
-- [Rate Limiter](#rate-limiter)
+- [Code Samples](#code-samples)
+  - [Rest Client Demo](#rest-client-demo)
+  - [Rate Limiter](#rate-limiter)
 
 # Code Samples
 This repo contains numerous code samples that demonstrate some key programming concepts in different programming languages, frameworks and libraries.
-
 
 ## Rest Client Demo
 This sample shows how to call an API using the HttpClient library provided out of the box in .NET Core Framework.
