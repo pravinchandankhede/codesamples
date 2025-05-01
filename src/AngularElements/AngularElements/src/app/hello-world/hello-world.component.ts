@@ -9,4 +9,3 @@ import { Component, Input } from '@angular/core';
 export class HelloWorldComponent {
     @Input() name: string = 'World';
 }
-

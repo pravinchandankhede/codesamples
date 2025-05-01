@@ -15,7 +15,6 @@ import { HelloWorldComponent } from './hello-world/hello-world.component';
         AppRoutingModule
     ],
     providers: [],
-    //bootstrap: [HelloWorldComponent],
 })
 export class AppModule {
 
@@ -26,5 +25,4 @@ export class AppModule {
 
     ngDoBootstrap() {
     }
-
 }
