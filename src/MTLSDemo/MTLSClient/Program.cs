@@ -2,13 +2,13 @@
 
 class Program
 {
-    static async Task Main(string[] args)
+    static async Task Main()
     {
         Console.WriteLine("Starting MTLS client...");
 
         // Specify your client certificate file and password.
-        string clientCertPath = "path/to/your/client.pfx";
-        string clientCertPassword = "yourPassword";
+        string clientCertPath = "client.pfx";
+        string clientCertPassword = "ClientPassword123";
 
         // Load the client certificate.
         var clientCertificate = new X509Certificate2(clientCertPath, clientCertPassword);
@@ -23,17 +23,18 @@ class Program
             (httpRequestMessage, cert, cetChain, policyErrors) => true;
 
         using var httpClient = new HttpClient(handler);
+        //using var httpClient = new HttpClient();
 
         try
         {
             // Replace with your actual API endpoint.
-            string apiUrl = "https://localhost:5001/api/accounts/12345";
+            string apiUrl = "https://localhost:7182/WeatherForecast";
             var response = await httpClient.GetAsync(apiUrl);
 
             if (response.IsSuccessStatusCode)
             {
-                var accountDetails = await response.Content.ReadAsStringAsync();
-                Console.WriteLine("Account Details: " + accountDetails);
+                var weatherDetails = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("Weather Details: " + weatherDetails);
             }
             else
             {
