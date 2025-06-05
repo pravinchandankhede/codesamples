@@ -3,6 +3,7 @@
 - [Code Samples](#code-samples)
   - [Rest Client Demo](#rest-client-demo)
   - [Rate Limiter](#rate-limiter)
+  - [mTLS Demo](#mutual-tls-demo)
 
 # Code Samples
 This repo contains numerous code samples that demonstrate some key programming concepts in different programming languages, frameworks and libraries.
@@ -13,3 +14,6 @@ This sample shows how to call an API using the HttpClient library provided out o
 ## Rate Limiter
 This solution demonstrates the implementation of a rate limiter pattern in .Net 9 ASP.NET Core API. It uses the standard NuGet packages to implement the various rate limit
 Specifically it shows the implementation of Fixed Window and Concurrency rate limiter. It also shows how to implement a custom date limiter using policy.
+
+## [Mutual TLS Demo](https://github.com/pravinchandankhede/codesamples/tree/main/src/MTLSDemo)
+This sample demonstrate the implementation of Mutual TLS (mTLS) protocol. We will go through the impportant concepts, its working, challenges and benefits. We will also see an implementation using in C# language using ASP.NET Core Service and .NET Console application.

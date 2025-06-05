@@ -1,3 +1,43 @@
+# Table of Contents
+
+- [Prerequisites](#prerequisites)
+  - [Installing .NET Core SDK](#installing-net-core-sdk)
+  - [Installing Visual Studio](#installing-visual-studio)
+- [Certificate Generation for Local Testing](#certificate-generation-for-local-testing)
+  - [Step 1: Generate a self-signed root certificate](#step-1-generate-a-self-signed-root-certificate)
+  - [Step 2: Generate a self-signed server certificate](#step-2-generate-a-self-signed-server-certificate)
+  - [Step 3: Generate a self-signed client certificate](#step-3-generate-a-self-signed-client-certificate)
+  - [Step 4: Install the root certificate](#step-4-install-the-root-certificate)
+- [Configure the server to use the certificates](#configure-the-server-to-use-the-certificates)
+  - [Configure ASP.NET Core Web API to use the certificates](#configure-aspnet-core-web-api-to-use-the-certificates)
+- [Configure the client to use the certificates](#configure-the-client-to-use-the-certificates)
+  - [Configure .NET Console application to use the client certificate](#configure-net-console-application-to-use-the-client-certificate)
+- [How it works?](#how-it-works)
+- [Conclusion](#conclusion)
+
+---
+
+## Prerequisites
+
+### Installing .NET Core SDK
+
+1. Visit the [.NET downloads page](https://dotnet.microsoft.com/download).
+2. Download the latest .NET Core SDK (recommended: LTS version).
+3. Run the installer and follow the prompts.
+4. After installation, verify by running:
+   ```bash
+   dotnet --version
+
+### Installing Visual Studio
+1. Go to the Visual Studio download page.
+2. Download the Community edition (free) or another edition as needed.
+3. Run the installer and select the following workloads:
+   - “ASP.NET and web development”
+   - “.NET desktop development” (optional, for console apps)
+4. Complete the installation.
+5. Launch Visual Studio and sign in with a Microsoft account if prompted.5
+
+Note: You can use Visual Studio Code as an alternative for lightweight development, but for ASP.NET Core development Visual Studio (Windows/Mac) is recommended.
 
 ## Certificate Generation for Local Testing
 We will utlize the Powershell command to generate a self-signed certificate for local testing. You can use OpenSSL or any other tool, but for simplicity, we will use the built-in command in Windows.
