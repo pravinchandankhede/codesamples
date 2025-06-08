@@ -1,5 +1,6 @@
 ﻿namespace XmlTransformationDemo;
 
+using System;
 using System.Xml;
 using System.Xml.Xsl;
 
@@ -14,9 +15,9 @@ internal class Program
     static void UsingXslCompiledTransform()
     {
         // Paths to the XML and XSLT files
-        string xmlPath = "books.xml";
-        string xsltPath = "transformation.xslt";
-        string outputPath = "catalog.html";
+        String xmlPath = "books.xml";
+        String xsltPath = "transformation.xslt";
+        String outputPath = "catalog.html";
 
         // Create the XslCompiledTransform and load the XSLT
         XslCompiledTransform xslt = new XslCompiledTransform();
@@ -31,11 +32,41 @@ internal class Program
         Console.WriteLine($"Transformation complete. Output written to {outputPath}");
     }
 
+    /// <summary>
+    /// Transforms an XML file into an HTML file using the legacy XslTransform class.
+    /// </summary>
+    /// <remarks>
+    /// XslTransform is obsolete and only available in .NET Framework, not .NET Core or .NET 5+.
+    /// This sample is for legacy reference only.
+    /// </remarks>
+    static void UsingXslTransform()
+    {
+#pragma warning disable SYSLIB0016 // Type or member is obsolete
+        string xmlPath = "books.xml";
+        string xsltPath = "transformation.xslt";
+        string outputPath = "catalog_xsltransform.html";
+
+        XslTransform xslt = new XslTransform();
+        xslt.Load(xsltPath);
+
+        using (XmlReader reader = XmlReader.Create(xmlPath))
+        using (XmlWriter writer = XmlWriter.Create(outputPath))
+        {
+#if !DEBUG
+            xslt.Transform(reader, null, writer);
+#endif
+        }
+
+        Console.WriteLine($"Transformation complete. Output written to {outputPath}");
+#pragma warning restore SYSLIB0016
+    }
+
     static void Main()
     {
         try
         {
             UsingXslCompiledTransform();
+            UsingXslTransform();
         }
         catch (Exception ex)
         {
