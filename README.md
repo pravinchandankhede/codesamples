@@ -1,3 +1,4 @@
+[![Unit Tests](https://github.com/pravinchandankhede/codesamples/actions/workflows/dotnet.yml/badge.svg)](https://github.com/pravinchandankhede/codesamples/actions/workflows/dotnet.yml)
 
 # Table of Contents
 - [Code Samples](#code-samples)
