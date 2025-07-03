@@ -28,7 +28,7 @@ This sample demonstrate the implementation of Mutual TLS (mTLS) protocol. We wil
 ## [XML Transformation Demo](https://github.com/pravinchandankhede/codesamples/tree/main/src/XmlTransformationDemo)
 This is sample code to demonstrate the working of XSLT transformaiton in .NET. It uses a XslCompiledTransform class to translate a XML file into HTML. This sample is further evolved in a full scale backbone of a enterpise integration & transformation engine here [XConnect](https://github.com/pravinchandankhede/XConnect)
 
-## Adaptive Card Demo
+## [Adaptive Card Demo](https://github.com/pravinchandankhede/codesamples/tree/main/src/AdaptiveCardDemo)
 This sample demonstrates the use of Adaptive Cards in an Angular application. It shows how to dynamically render Adaptive Cards using the `adaptivecards` JavaScript library.
 
 **Features:**
