@@ -1,4 +1,3 @@
-
 # Table of Contents
 - [Code Samples](#code-samples)
   - [Rest Client Demo](#rest-client-demo)
@@ -6,6 +5,7 @@
   - [Angular Elements](#angular-elements)
   - [mTLS Demo](#mutual-tls-demo)
   - [XML Transformation Demo](#xml-transformation-demo)
+  - [Adaptive Card Demo](#adaptive-card-demo)
 
 # Code Samples
 This repo contains numerous code samples that demonstrate some key programming concepts in different programming languages, frameworks and libraries.
@@ -25,3 +25,26 @@ This sample demonstrate the implementation of Mutual TLS (mTLS) protocol. We wil
 
 ## [XML Transformation Demo](https://github.com/pravinchandankhede/codesamples/tree/main/src/XmlTransformationDemo)
 This is sample code to demonstrate the working of XSLT transformaiton in .NET. It uses a XslCompiledTransform class to translate a XML file into HTML. This sample is further evolved in a full scale backbone of a enterpise integration & transformation engine here [XConnect](https://github.com/pravinchandankhede/XConnect)
+
+## Adaptive Card Demo
+This sample demonstrates the use of Adaptive Cards in an Angular application. It shows how to dynamically render Adaptive Cards using the `adaptivecards` JavaScript library.
+
+**Features:**
+- Renders multiple Adaptive Cards, including:
+  - A static table with work item types and counts
+  - A donut chart visualizing the distribution of work items (using a chart image)
+- Demonstrates integration of Adaptive Cards with Angular components
+
+**How it works:**
+- The Angular component creates and parses Adaptive Card JSON payloads
+- Cards are rendered and appended to the DOM at runtime
+- The donut chart is generated using the QuickChart API and embedded as an image in the card
+
+**Location:**
+- Project directory: `src/AdaptiveCardDemo/AdaptiveCardDemo`
+- Main component: `src/app/app.component.ts`
+
+**Usage:**
+- Install dependencies: `npm install`
+- Run the Angular app: `ng serve`
+- View the rendered Adaptive Cards in the browser
