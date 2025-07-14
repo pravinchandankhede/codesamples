@@ -1,0 +1,5 @@
+{
+    "storageAccount": "testpicapp",
+    "containers": [ "pics", "container2" ],
+    "sasToken": ""
+}

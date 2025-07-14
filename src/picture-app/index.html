@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Azure Image Gallery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7mQ1Q1Zr5l9e5lF4U5z5F5r5F5r5F5r5F5r" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+            body.dark-mode {
+                background-color: #181a1b;
+                color: #e0e0e0;
+            }
+
+        #image-box {
+            min-width: 220px;
+            min-height: 220px;
+            max-width: 98vw;
+            padding: 16px;
+        }
+
+        body.dark-mode #image-box {
+            background: #23272b;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.32);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            max-width: 90vw;
+            max-height: 50vh;
+        }
+
+        body.dark-mode .gallery-img {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.05);
+        }
+
+        #prev-btn, #next-btn {
+            width: 160px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-radius: 32px;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            color: #fff;
+            border: none;
+            box-shadow: 0 2px 8px rgba(106,17,203,0.15);
+            margin: 0 8px;
+            padding: 18px 0;
+            transition: transform 0.1s;
+        }
+
+        body.dark-mode #prev-btn, body.dark-mode #next-btn {
+            background: linear-gradient(90deg, #232526 0%, #414345 100%);
+            color: #e0e0e0;
+        }
+
+        #prev-btn:active, #next-btn:active {
+            transform: scale(0.97);
+        }
+
+        .toggle-dark {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            padding: 8px 16px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: background 0.2s;
+        }
+
+        body.dark-mode .toggle-dark {
+            background: #23272b;
+            color: #e0e0e0;
+        }
+
+        #fullscreen-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 10;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            border: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        body.dark-mode #fullscreen-btn {
+            background: #23272b;
+            color: #e0e0e0;
+        }
+
+        @media (max-width: 600px) {
+            #image-box {
+                padding: 8px;
+                min-width: 120px;
+                min-height: 120px;
+            }
+
+            .gallery-img {
+                max-width: 98vw;
+                max-height: 40vh;
+            }
+
+            #prev-btn, #next-btn {
+                width: 48vw !important;
+                font-size: 1.3rem !important;
+                padding: 16px 0 !important;
+            }
+
+            #img-counter {
+                font-size: 0.95rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-4 d-flex flex-column align-items-center justify-content-center" style="min-height: 80vh;">
+        <h2 class="text-center mb-4">📷 Azure Image Gallery</h2>
+        <select id="container-select" class="form-select mb-4" style="max-width: 320px;"></select>
+        <button class="toggle-dark" id="toggle-dark">🌙 Dark Mode</button>
+        <div id="image-box" class="d-flex flex-column align-items-center justify-content-center position-relative" style="background: #fff; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); padding: 32px; min-width: 320px; min-height: 320px; max-width: 90vw;">
+            <button id="fullscreen-btn" title="Fullscreen" aria-label="Fullscreen">⛶</button>
+            <img id="main-img" src="" class="gallery-img mb-3" alt="Azure Image" style="max-width: 400px; max-height: 400px; display: block; margin: 0 auto;" />
+            <div id="img-counter" class="mb-3 text-muted" style="font-size: 1rem;"></div>
+            <div class="d-flex justify-content-center w-100" style="position: absolute; bottom: 24px; left: 0;">
+                <button id="prev-btn" class="btn btn-lg btn-gradient me-3">&#8592; Prev</button>
+                <button id="next-btn" class="btn btn-lg btn-gradient ms-3">Next &#8594;</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        async function loadConfig() {
+            const response = await fetch('config.json');
+            const config = await response.json();
+            return config;
+        }
+
+        async function fetchBlobList(storageAccount, container, sasToken) {
+            const url = `https://${storageAccount}.blob.core.windows.net/${container}?restype=container&comp=list&${sasToken}`;
+            const response = await fetch(url);
+            const xmlText = await response.text();
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
+            const blobs = Array.from(xmlDoc.getElementsByTagName('Blob'));
+            return blobs.map(blob => blob.getElementsByTagName('Name')[0].textContent);
+        }
+
+        async function loadImages(selectedContainer) {
+            const config = await loadConfig();
+            const storageAccount = config.storageAccount;
+            const sasToken = config.sasToken;
+            const container = selectedContainer || config.containers[0];
+            const blobNames = await fetchBlobList(storageAccount, container, sasToken);
+            let currentIndex = 0;
+            const mainImg = document.getElementById("main-img");
+            const prevBtn = document.getElementById("prev-btn");
+            const nextBtn = document.getElementById("next-btn");
+            const imgCounter = document.getElementById("img-counter");
+
+            function showImage(index) {
+                if (blobNames.length === 0) {
+                    mainImg.src = "";
+                    mainImg.alt = "No images found";
+                    imgCounter.textContent = "No images found.";
+                    prevBtn.disabled = true;
+                    nextBtn.disabled = true;
+                    return;
+                }
+                const url = `https://${storageAccount}.blob.core.windows.net/${container}/${blobNames[index]}?${sasToken}`;
+                mainImg.src = url;
+                mainImg.alt = blobNames[index];
+                imgCounter.textContent = `Image ${index + 1} of ${blobNames.length}`;
+                prevBtn.disabled = index === 0;
+                nextBtn.disabled = index === blobNames.length - 1;
+            }
+
+            prevBtn.onclick = function() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    showImage(currentIndex);
+                }
+            };
+            nextBtn.onclick = function() {
+                if (currentIndex < blobNames.length - 1) {
+                    currentIndex++;
+                    showImage(currentIndex);
+                }
+            };
+            showImage(currentIndex);
+
+            // Swipe support
+            let touchStartX = null;
+            mainImg.addEventListener('touchstart', function(e) {
+                touchStartX = e.touches[0].clientX;
+            });
+            mainImg.addEventListener('touchend', function(e) {
+                if (touchStartX === null) return;
+                let touchEndX = e.changedTouches[0].clientX;
+                if (touchEndX - touchStartX > 50) {
+                    prevBtn.click();
+                } else if (touchStartX - touchEndX > 50) {
+                    nextBtn.click();
+                }
+                touchStartX = null;
+            });
+
+            // Keyboard support
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') prevBtn.click();
+                if (e.key === 'ArrowRight') nextBtn.click();
+                if (e.key === 'f' || e.key === 'F') fullscreenBtn.click();
+                if (e.key === 'd' || e.key === 'D') document.getElementById('toggle-dark').click();
+            });
+        }
+
+        async function initGallery() {
+            const config = await loadConfig();
+            const containerSelect = document.getElementById('container-select');
+            containerSelect.innerHTML = config.containers.map(c => `<option value="${c}">${c}</option>`).join('');
+            containerSelect.onchange = function() {
+                loadImages(this.value);
+            };
+            loadImages(config.containers[0]);
+        }
+
+        initGallery();
+
+        document.getElementById('toggle-dark').onclick = function() {
+            document.body.classList.toggle('dark-mode');
+            this.textContent = document.body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
+        };
+
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
+        fullscreenBtn.onclick = function() {
+            const imageBox = document.getElementById('image-box');
+            if (!document.fullscreenElement) {
+                imageBox.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        };
+    </script>
+</body>
+</html>
