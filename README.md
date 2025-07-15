@@ -1,4 +1,4 @@
-[![Unit Tests](https://github.com/pravinchandankhede/codesamples/actions/workflows/dotnet.yml/badge.svg)](https://github.com/pravinchandankhede/codesamples/actions/workflows/dotnet.yml)
+[![Unit Tests](https://github.com/pravinchandankhede/codesamples/actions/workflows/dotnet.yml/badge.svg)](https://github.com/pravinchandankhede/codesamples/actions/workflows/azure-static-web-apps-happy-wave-0ec297500.yml).
 
 # Table of Contents
 - [Code Samples](#code-samples)
