@@ -8,6 +8,7 @@
   - [mTLS Demo](#mutual-tls-demo)
   - [XML Transformation Demo](#xml-transformation-demo)
   - [Adaptive Card Demo](#adaptive-card-demo)
+  - [Picture App](#picture-app)
 
 # Code Samples
 This repo contains numerous code samples that demonstrate some key programming concepts in different programming languages, frameworks and libraries.
@@ -72,3 +73,6 @@ This sample demonstrates the use of Adaptive Cards in an Angular application. It
 - Install dependencies: `npm install`
 - Run the Angular app: `ng serve`
 - View the rendered Adaptive Cards in the browser
+
+## [Picture App](https://github.com/pravinchandankhede/codesamples/tree/main/src/picture-app)
+This is a simple picture gallery app using plain HTML and JavaScript code. It uses images stored in Azure Storage and is mobile friendly.
